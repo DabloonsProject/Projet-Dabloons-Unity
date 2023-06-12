@@ -60,7 +60,7 @@ sysinfo.txt
 *.aab
 *.unitypackage
 *.app
-*/PackageCache
+Dabloons project\Library\PackageCache
 
 # Crashlytics generated file
 crashlytics-build.properties
