@@ -61,8 +61,6 @@ sysinfo.txt
 *.unitypackage
 *.app
 PackageCache
-Library
-shadercompiler-UnityShaderCompiler.exe0.log
 
 # Crashlytics generated file
 crashlytics-build.properties
