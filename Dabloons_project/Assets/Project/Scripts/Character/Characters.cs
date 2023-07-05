@@ -1,53 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Characters : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private PersonnagesData classe;
+
     void Start()
-    {
-        string cheminFichier = Path.Combine(Application.streamingAssetsPath, "fichier.json");
+    {        
+        string cheminFichier = Path.Combine(Application.streamingAssetsPath, "Characters_data.json");
         string contenuFichier = File.ReadAllText(cheminFichier);
 
-        classe = JsonUtility.FromJson<Classe>(contenuFichier);
+        classe = JsonUtility.FromJson<PersonnagesData>(contenuFichier);
+        Debug.Log($"Nom de la classe : {classe.nom}");
 
-        // Utilisation des données lues du fichier JSON
-        Debug.Log($"Nom de la classe : {classe.Nom}");
-
-        foreach (Personnage personnage in classe.Personnages)
+        foreach (Character personnage in classe.personnages)
         {
-            Debug.Log($"Nom du personnage : {personnage.Nom}");
-            Debug.Log($"Points de vie : {personnage.PointsDeVie}");
-            Debug.Log($"Armure : {personnage.Armure}");
-
-            foreach (string competence in personnage.Competences)
-            {
-                Debug.Log($"Compétence : {competence}");
-            }
-
+            Debug.Log($"Nom du personnage : {personnage.nom}");
+            Debug.Log($"Points de vie : {personnage.vie}");
+            Debug.Log($"Points de vie : {personnage.mana}");
+            Debug.Log($"Armure : {personnage.armure}");
+            
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
+/*
     void SauvegarderDonneesModifiees()
     {
-        string cheminFichier = Path.Combine(Application.streamingAssetsPath, "fichier.json");
+        string cheminFichier = Path.Combine(Application.streamingAssetsPath, "Characters_data.json");
         string json = JsonUtility.ToJson(classe, true);
         File.WriteAllText(cheminFichier, json);
     }
+*/
 }
 
-
-    [Serializable]
-    public class Player
-    {
-        public string playerId;
-        public string playerLoc;
-        public string playerNick;
-    }
+[System.Serializable]
+public class PersonnagesData
+{
+    public string nom;
+    public Character[] personnages;
 }
