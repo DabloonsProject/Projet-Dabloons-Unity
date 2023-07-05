@@ -1,0 +1,36 @@
+{
+    "personnages": [
+        {
+            "nom": "Character 1",
+            "vie": 130,
+            "mana": 50,
+            "armure": 20,
+            "vitesse": 7
+        },
+        {
+            "nom": "Character 2",
+            "vie": 230,
+            "mana": 100,
+            "armure": 30,
+            "vitesse": 5
+        }
+    ],
+    "pnjs": [
+        {
+            "nom": "PNJ 1",
+            "vie": 150,
+            "mana": 80,
+            "armure": 25,
+            "attribute_1": "Attribute 1_seen",
+            "attribute_2": 0
+        },
+        {
+            "nom": "PNJ 2",
+            "vie": 120,
+            "mana": 60,
+            "armure": 15,
+            "attribute_1": "Attribute 3_seen",
+            "attribute_2": 0
+        }
+    ]
+}
