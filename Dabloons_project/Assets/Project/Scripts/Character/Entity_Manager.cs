@@ -11,7 +11,6 @@ public class Entity_Manager : MonoBehaviour
     void Start()
     {        
         string filePath = Path.Combine(Application.streamingAssetsPath, "Entities_data.json");
-        Debug.Log(filePath);
         string filecontent = File.ReadAllText(filePath);
         all_entities = JsonUtility.FromJson<EntitiesData>(filecontent);
 
