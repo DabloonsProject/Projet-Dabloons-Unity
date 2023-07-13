@@ -1,36 +1,80 @@
 {
     "personnages": [
         {
-            "nom": "Character 1",
-            "vie": 130,
+            "name": "Character 1",
+            "life": 130,
             "mana": 50,
-            "armure": 20,
-            "vitesse": 7
+            "armour": 20,
+            "speed": 7.0,
+            "money": 10,
+            "escape": 10
         },
         {
-            "nom": "Character 2",
-            "vie": 230,
-            "mana": 100,
-            "armure": 30,
-            "vitesse": 5
+            "name": "Character 2",
+            "life": 20,
+            "mana": 10,
+            "armour": 30,
+            "speed": 6.0,
+            "money": 0,
+            "escape": 30
         }
     ],
     "pnjs": [
         {
-            "nom": "PNJ 1",
-            "vie": 150,
-            "mana": 80,
-            "armure": 25,
-            "attribute_1": "Attribute 1_seen",
-            "attribute_2": 0
+            "name": "PNJ 1",
+            "life": 100,
+            "mana": 50,
+            "armour": 20,
+            "speed": 5.0,
+            "money": 10,
+            "level": 0,
+            "age": 5,
+            "race": "hérisson",
+            "personality": [
+                "gender",
+                "gender expression"
+            ],
+            "liking": 0,
+            "questsList": [
+                {
+                    "name": "quest1",
+                    "value": 1
+                },
+                {
+                    "name": "quest2",
+                    "value": 5
+                },
+                {
+                    "name": "quest3",
+                    "value": 10
+                }
+            ]
         },
         {
-            "nom": "PNJ 2",
-            "vie": 120,
-            "mana": 60,
-            "armure": 15,
-            "attribute_1": "Attribute 3_seen",
-            "attribute_2": 0
+            "name": "PNJ 2",
+            "life": 110,
+            "mana": 50,
+            "armour": 20,
+            "speed": 6.0,
+            "money": 0,
+            "level": 0,
+            "age": 25,
+            "race": "chat",
+            "personality": [
+                "gender",
+                "gender expression"
+            ],
+            "liking": 0,
+            "questsList": [
+                {
+                    "name": "quest4",
+                    "value": 25
+                },
+                {
+                    "name": "quest5",
+                    "value": 0
+                }
+            ]
         }
     ]
 }

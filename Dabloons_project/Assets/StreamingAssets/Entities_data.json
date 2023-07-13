@@ -1,36 +1,50 @@
 {
     "personnages": [
         {
-            "nom": "Character 1",
-            "vie": 120,
+            "name": "Character 1",
+            "life": 120,
             "mana": 50,
-            "armure": 20,
-            "vitesse": 8
+            "armour": 20,
+            "speed": 8,
+            "money": 10,
+            "escape": 10
         },
         {
-            "nom": "Character 2",
-            "vie": 220,
-            "mana": 100,
-            "armure": 30,
-            "vitesse": 6
+            "name": "Character 2",
+            "life": 10,
+            "mana": 10,
+            "armour": 30,
+            "speed": 7,
+            "money": 0,
+            "escape": 30
         }
     ],
     "pnjs": [
         {
-            "nom": "PNJ 1",
-            "vie": 150,
-            "mana": 80,
-            "armure": 25,
-            "attribute_1": "Attribute 1",
-            "attribute_2": 0
+            "name": "PNJ 1",
+            "life": 100,
+            "mana": 50,
+            "armour": 20,
+            "speed": 5,
+            "money": 10,
+            "level": 0,
+            "age": 5,
+            "race": "hérisson",
+            "personality": ["gender", "gender expression"],
+            "liking": 0
         },
         {
-            "nom": "PNJ 2",
-            "vie": 120,
-            "mana": 60,
-            "armure": 15,
-            "attribute_1": "Attribute 3",
-            "attribute_2": 0
+            "name": "PNJ 2",
+            "life": 110,
+            "mana": 50,
+            "armour": 20,
+            "speed": 6,
+            "money": 0,
+            "level": 0,
+            "age": 25,
+            "race": "chat",
+            "personality": ["gender", "gender expression"],
+            "liking": 0
         }
     ]
 }

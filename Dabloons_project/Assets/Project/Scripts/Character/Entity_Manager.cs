@@ -14,50 +14,69 @@ public class Entity_Manager : MonoBehaviour
         string filecontent = File.ReadAllText(filePath);
         all_entities = JsonUtility.FromJson<EntitiesData>(filecontent);
 
-        /*
         Debug.Log($"Start");
         debugValues();
 
         foreach (Character personnage in all_entities.personnages)
         {
-            personnage.vie += 10;
-            personnage.vitesse -= 1;
-        }
-        foreach (PNJ pnjs in all_entities.pnjs)
-        {
-            pnjs.attribute_1 += "_seen";
+            personnage.life += 10;
+            personnage.speed -= 1;
         }
 
-        Debug.Log($"Mods");
+        Debug.Log($"Mods zetger tgertg rth rthrt hrj");
         SaveModifs();
         string filePaths = Path.Combine(Application.dataPath, "Resources/Player.json");
         string file_contents = File.ReadAllText(filePaths);
         all_entities = JsonUtility.FromJson<EntitiesData>(file_contents);
         debugValues();
-        */
+
     }
 /*
+
+getting competences and modifying
+
+foreach (KeyValuePair<string, int> modifier in ability.modifiers)
+{
+    string modifierName = modifier.Key;
+    int modifierValue = modifier.Value;
+    
+    // Use the modifierName and modifierValue to modify the corresponding value in your fight manager
+    fightManager.ModifyValue(modifierName, modifierValue);
+}
+*/
     void debugValues()
     {
         foreach (Character personnage in all_entities.personnages)
         {
-            Debug.Log($"Nom du personnage : {personnage.nom}");
-            Debug.Log($"Points de vie : {personnage.vie}");
+            Debug.Log($"Nom du personnage : {personnage.name}");
+            Debug.Log($"Points de vie : {personnage.life}");
             Debug.Log($"Points de mana : {personnage.mana}");
-            Debug.Log($"Armure : {personnage.armure}");
-            Debug.Log($"Vitesse: {personnage.vitesse}");
+            Debug.Log($"Armure : {personnage.armour}");
+            Debug.Log($"Vitesse: {personnage.speed}");
+            Debug.Log($"Fuite: {personnage.escape}");
         }
-        foreach (PNJ pnjs in all_entities.pnjs)
-        {
-            Debug.Log($"Nom du personnage : {pnjs.nom}");
-            Debug.Log($"Points de vie : {pnjs.vie}");
-            Debug.Log($"Points de mana : {pnjs.mana}");
-            Debug.Log($"Armure : {pnjs.armure}");
-            Debug.Log($"Attribut 1 : {pnjs.attribute_1}");
-            Debug.Log($"Attribut 2 : {pnjs.attribute_2}");
+        foreach (PNJ pnj in all_entities.pnjs)
+        { 
+            //pnj.InitializePNJ(); 
+            Debug.Log($"Nom du personnage : {pnj.name}");
+            Debug.Log($"Points de vie : {pnj.life}");
+            Debug.Log($"Points de mana : {pnj.mana}");
+            Debug.Log($"Armure : {pnj.armour}");
+            Debug.Log($"Vitesse: {pnj.speed}");
+            Debug.Log($"Age : {pnj.age}");
+            Debug.Log($"Race: {pnj.race}");
+            /*
+            foreach (KeyValuePair<string, int> questEntry in pnj.quests)
+            {                
+                string questName = questEntry.Key;
+                Quest quest = questEntry.Value;
+                int value = quest.value;
+                string value2 = quest.value2;
+
+                Debug.Log($"Quête : {questName}, Valeur : {value}, Valeur2 : {value2}");
+            }*/
         }
     }
-*/
     void SaveModifs()
     {
         string filePath = Path.Combine(Application.dataPath, "Resources/Player.json");
