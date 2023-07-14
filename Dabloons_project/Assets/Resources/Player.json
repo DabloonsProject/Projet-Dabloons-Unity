@@ -38,15 +38,18 @@
             "questsList": [
                 {
                     "name": "quest1",
-                    "value": 1
+                    "value": 1,
+                    "value2": "line"
                 },
                 {
                     "name": "quest2",
-                    "value": 5
+                    "value": 5,
+                    "value2": "circle"
                 },
                 {
                     "name": "quest3",
-                    "value": 10
+                    "value": 10,
+                    "value2": "square"
                 }
             ]
         },
@@ -68,11 +71,13 @@
             "questsList": [
                 {
                     "name": "quest4",
-                    "value": 25
+                    "value": 0,
+                    "value2": "triangle"
                 },
                 {
                     "name": "quest5",
-                    "value": 0
+                    "value": 15,
+                    "value2": "rectangle"
                 }
             ]
         }

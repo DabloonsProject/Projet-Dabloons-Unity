@@ -41,10 +41,9 @@ public class PNJ : Entity
     public List<string> personality; // contains (gender, gender expression, personnality traits, loisirs, addictions...)
     public int liking; // how much does this pnj likes the player
 
-/* En cours 
 
     public Quest[] questsList;
-    public Dictionary<string, int> quests;
+    public Dictionary<string, Quest> quests;
 
     public void InitializePNJ()
     {
@@ -58,7 +57,11 @@ public class PNJ : Entity
             var propertyInfo = typeof(Quest).GetProperty(valueName);
             if (propertyInfo != null && propertyInfo.PropertyType == typeof(int))
             {
-                return (int)propertyInfo.GetValue(quest);
+                object value = propertyInfo.GetValue(quest);
+                if (value != null)
+                {
+                    return (int)value;
+                }
             }
         }
         return 0;
@@ -71,25 +74,27 @@ public class PNJ : Entity
             var propertyInfo = typeof(Quest).GetProperty(valueName);
             if (propertyInfo != null && propertyInfo.PropertyType == typeof(string))
             {
-                return (string)propertyInfo.GetValue(quest);
+                object value = propertyInfo.GetValue(quest);
+                if (value != null)
+                {
+                    return (string)value;
+                }
             }
         }
         return string.Empty;
     }
 
-    public Dictionary<string, int> ConvertArrayToDictionary(Quest[] questsList)
+    public Dictionary<string, Quest> ConvertArrayToDictionary(Quest[] questsList)
     {
-        Dictionary<string, int> dictionary = new Dictionary<string, int>();
+        Dictionary<string, Quest> dictionary = new Dictionary<string, Quest>();
         foreach (Quest quest in questsList)
         {
             dictionary[quest.name] = quest;
         }
         return dictionary;
     }
-*/
 }
 
-/*
 [System.Serializable]
 public class Quest
 {
@@ -97,25 +102,6 @@ public class Quest
     public int value;
     public string value2;
 }
-"questsList": [
-                {
-                    "name": "quest1",
-                    "value": 1,
-                    "value2": "line"
-                },
-                {
-                    "name": "quest2",
-                    "value": 5,
-                    "value2": "circle"
-                },
-                {
-                    "name": "quest3",
-                    "value": 10,
-                    "value2": "square"
-                }
-            ]
-*/
-
 //obviously all entities will have an inventory/ PNJ have quests (dealt with by dialogues ?)
 
 /* Compétences start

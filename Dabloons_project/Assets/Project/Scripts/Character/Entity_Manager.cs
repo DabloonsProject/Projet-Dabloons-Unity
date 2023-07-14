@@ -27,7 +27,11 @@ public class Entity_Manager : MonoBehaviour
         SaveModifs();
         string filePaths = Path.Combine(Application.dataPath, "Resources/Player.json");
         string file_contents = File.ReadAllText(filePaths);
-        all_entities = JsonUtility.FromJson<EntitiesData>(file_contents);
+        all_entities = JsonUtility.FromJson<EntitiesData>(file_contents); 
+        /* For one character
+        string filePaths = Path.Combine(Application.dataPath, "Resources/Player.json");
+        string file_contents = File.ReadAllText(filePaths);
+        all_entities.personnages[0] = JsonUtility.FromJson<Character>(file_contents)*/
         debugValues();
 
     }
@@ -57,7 +61,7 @@ foreach (KeyValuePair<string, int> modifier in ability.modifiers)
         }
         foreach (PNJ pnj in all_entities.pnjs)
         { 
-            //pnj.InitializePNJ(); 
+            pnj.InitializePNJ(); 
             Debug.Log($"Nom du personnage : {pnj.name}");
             Debug.Log($"Points de vie : {pnj.life}");
             Debug.Log($"Points de mana : {pnj.mana}");
@@ -65,8 +69,8 @@ foreach (KeyValuePair<string, int> modifier in ability.modifiers)
             Debug.Log($"Vitesse: {pnj.speed}");
             Debug.Log($"Age : {pnj.age}");
             Debug.Log($"Race: {pnj.race}");
-            /*
-            foreach (KeyValuePair<string, int> questEntry in pnj.quests)
+            
+            foreach (KeyValuePair<string,Quest> questEntry in pnj.quests)
             {                
                 string questName = questEntry.Key;
                 Quest quest = questEntry.Value;
@@ -74,7 +78,7 @@ foreach (KeyValuePair<string, int> modifier in ability.modifiers)
                 string value2 = quest.value2;
 
                 Debug.Log($"Quête : {questName}, Valeur : {value}, Valeur2 : {value2}");
-            }*/
+            }
         }
     }
     void SaveModifs()
@@ -83,6 +87,10 @@ foreach (KeyValuePair<string, int> modifier in ability.modifiers)
         if (File.Exists(filePath))
         {
             string json = JsonUtility.ToJson(all_entities, true);
+            /* for one character
+            int characterIndex = 0;
+            Character character = all_entities.personnages[characterIndex];
+            string json = JsonUtility.ToJson(character, true);*/
             File.WriteAllText(filePath, json);
         }
         else
