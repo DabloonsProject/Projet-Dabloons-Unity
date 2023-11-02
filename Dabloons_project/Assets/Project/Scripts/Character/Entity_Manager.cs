@@ -10,30 +10,37 @@ public class Entity_Manager : MonoBehaviour
 
     void Start()
     {        
+        FromJsonEntities();
+
+        SaveModifsPlayer();
+        SaveModifsPNJs();
+    }
+
+    void FromJsonEntities(){
         string filePath = Path.Combine(Application.streamingAssetsPath, "Entities_data.json");
         string filecontent = File.ReadAllText(filePath);
         all_entities = JsonUtility.FromJson<EntitiesData>(filecontent);
-
+        /*debug*/
         Debug.Log($"Start");
         debugValues();
-
         foreach (Character personnage in all_entities.personnages)
         {
             personnage.life += 10;
             personnage.speed -= 1;
         }
-
         Debug.Log($"Mods zetger tgertg rth rthrt hrj");
         SaveModifs();
-        string filePaths = Path.Combine(Application.dataPath, "Resources/Player.json");
+
+        string filePaths = Path.Combine(Application.dataPath, "Resources/Entities.json");
         string file_contents = File.ReadAllText(filePaths);
         all_entities = JsonUtility.FromJson<EntitiesData>(file_contents); 
+        debugValues();
+        /*debug*/
+
         /* For one character
         string filePaths = Path.Combine(Application.dataPath, "Resources/Player.json");
         string file_contents = File.ReadAllText(filePaths);
         all_entities.personnages[0] = JsonUtility.FromJson<Character>(file_contents)*/
-        debugValues();
-
     }
 /*
 
@@ -83,7 +90,7 @@ foreach (KeyValuePair<string, int> modifier in ability.modifiers)
     }
     void SaveModifs()
     {
-        string filePath = Path.Combine(Application.dataPath, "Resources/Player.json");
+        string filePath = Path.Combine(Application.dataPath, "Resources/Entities.json");
         if (File.Exists(filePath))
         {
             string json = JsonUtility.ToJson(all_entities, true);
@@ -91,6 +98,37 @@ foreach (KeyValuePair<string, int> modifier in ability.modifiers)
             int characterIndex = 0;
             Character character = all_entities.personnages[characterIndex];
             string json = JsonUtility.ToJson(character, true);*/
+            File.WriteAllText(filePath, json);
+        }
+        else
+        {
+            Debug.LogError("Failed to load JSON file from Resources folder: " + filePath);
+        }
+    }
+
+    void SaveModifsPlayer()
+    {
+        string filePath = Path.Combine(Application.dataPath, "Resources/Player.json");
+        if (File.Exists(filePath))
+        {
+
+            int characterIndex = 0;
+            Character character = all_entities.personnages[characterIndex];
+            string json = JsonUtility.ToJson(character, true);
+
+            File.WriteAllText(filePath, json);
+        }
+        else
+        {
+            Debug.LogError("Failed to load JSON file from Resources folder: " + filePath);
+        }
+    }
+    void SaveModifsPNJs()
+    {
+        string filePath = Path.Combine(Application.dataPath, "Resources/PNJs.json");
+        if (File.Exists(filePath))
+        {
+            string json = JsonUtility.ToJson(all_entities.pnjs, true);
             File.WriteAllText(filePath, json);
         }
         else

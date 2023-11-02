@@ -1,85 +1,9 @@
 {
-    "personnages": [
-        {
-            "name": "Character 1",
-            "life": 130,
-            "mana": 50,
-            "armour": 20,
-            "speed": 7.0,
-            "money": 10,
-            "escape": 10
-        },
-        {
-            "name": "Character 2",
-            "life": 20,
-            "mana": 10,
-            "armour": 30,
-            "speed": 6.0,
-            "money": 0,
-            "escape": 30
-        }
-    ],
-    "pnjs": [
-        {
-            "name": "PNJ 1",
-            "life": 100,
-            "mana": 50,
-            "armour": 20,
-            "speed": 5.0,
-            "money": 10,
-            "level": 0,
-            "age": 5,
-            "race": "hérisson",
-            "personality": [
-                "gender",
-                "gender expression"
-            ],
-            "liking": 0,
-            "questsList": [
-                {
-                    "name": "quest1",
-                    "value": 1,
-                    "value2": "line"
-                },
-                {
-                    "name": "quest2",
-                    "value": 5,
-                    "value2": "circle"
-                },
-                {
-                    "name": "quest3",
-                    "value": 10,
-                    "value2": "square"
-                }
-            ]
-        },
-        {
-            "name": "PNJ 2",
-            "life": 110,
-            "mana": 50,
-            "armour": 20,
-            "speed": 6.0,
-            "money": 0,
-            "level": 0,
-            "age": 25,
-            "race": "chat",
-            "personality": [
-                "gender",
-                "gender expression"
-            ],
-            "liking": 0,
-            "questsList": [
-                {
-                    "name": "quest4",
-                    "value": 0,
-                    "value2": "triangle"
-                },
-                {
-                    "name": "quest5",
-                    "value": 15,
-                    "value2": "rectangle"
-                }
-            ]
-        }
-    ]
+    "name": "Character 1",
+    "life": 130,
+    "mana": 50,
+    "armour": 20,
+    "speed": 7.0,
+    "money": 10,
+    "escape": 10
 }
