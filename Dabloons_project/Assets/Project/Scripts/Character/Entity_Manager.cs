@@ -11,7 +11,6 @@ public class Entity_Manager : MonoBehaviour
     void Start()
     {        
         FromJsonEntities();
-
         SaveModifsPlayer();
         SaveModifsPNJs();
     }
@@ -20,6 +19,7 @@ public class Entity_Manager : MonoBehaviour
         string filePath = Path.Combine(Application.streamingAssetsPath, "Entities_data.json");
         string filecontent = File.ReadAllText(filePath);
         all_entities = JsonUtility.FromJson<EntitiesData>(filecontent);
+
         /*debug*/
         Debug.Log($"Start");
         debugValues();
@@ -36,27 +36,66 @@ public class Entity_Manager : MonoBehaviour
         all_entities = JsonUtility.FromJson<EntitiesData>(file_contents); 
         debugValues();
         /*debug*/
-
         /* For one character
         string filePaths = Path.Combine(Application.dataPath, "Resources/Player.json");
         string file_contents = File.ReadAllText(filePaths);
         all_entities.personnages[0] = JsonUtility.FromJson<Character>(file_contents)*/
     }
-/*
-
-getting competences and modifying
-
-foreach (KeyValuePair<string, int> modifier in ability.modifiers)
-{
-    string modifierName = modifier.Key;
-    int modifierValue = modifier.Value;
-    
-    // Use the modifierName and modifierValue to modify the corresponding value in your fight manager
-    fightManager.ModifyValue(modifierName, modifierValue);
-}
-*/
-    void debugValues()
+    void SaveModifs()
     {
+        string filePath = Path.Combine(Application.dataPath, "Resources/Entities.json");
+        if (File.Exists(filePath))
+        {
+            string json = JsonUtility.ToJson(all_entities, true);
+            /* for one character
+            int characterIndex = 0;
+            Character character = all_entities.personnages[characterIndex];
+            string json = JsonUtility.ToJson(character, true);*/
+            File.WriteAllText(filePath, json);
+        }
+        else
+        {
+            Debug.LogError("Failed to load JSON file from Resources folder: " + filePath);
+        }
+    }
+    void SaveModifsPlayer()
+    {
+        string filePath = Path.Combine(Application.dataPath, "Resources/Player.json");
+        if (File.Exists(filePath))
+        {
+            int characterIndex = 0; /*Player index !*/
+            Character character = all_entities.personnages[characterIndex];
+            string json = JsonUtility.ToJson(character, true);
+            File.WriteAllText(filePath, json);
+        }
+        else
+        {
+            Debug.LogError("Failed to load JSON file from Resources folder: " + filePath);
+        }
+    }
+    void SaveModifsPNJs()
+    {
+        string filePath = Path.Combine(Application.dataPath, "Resources/PNJs.json");
+        if (File.Exists(filePath))
+        {
+            List<string> jsonPNJs = new List<string>();
+
+            foreach (PNJ pnj in all_entities.pnjs)
+            {
+                string json = JsonUtility.ToJson(pnj, true);
+                jsonPNJs.Add(json);
+            }
+            string finalJson = "[" + string.Join(",", jsonPNJs.ToArray()) + "]";
+            File.WriteAllText(filePath, finalJson);
+        }
+        else
+        {
+            Debug.LogError("Failed to load JSON file from Resources folder: " + filePath);
+        }
+    }
+     void debugValues()
+    {
+        Debug.Log($"Personnages");
         foreach (Character personnage in all_entities.personnages)
         {
             Debug.Log($"Nom du personnage : {personnage.name}");
@@ -66,6 +105,7 @@ foreach (KeyValuePair<string, int> modifier in ability.modifiers)
             Debug.Log($"Vitesse: {personnage.speed}");
             Debug.Log($"Fuite: {personnage.escape}");
         }
+        Debug.Log($"PNJs");
         foreach (PNJ pnj in all_entities.pnjs)
         { 
             pnj.InitializePNJ(); 
@@ -88,54 +128,16 @@ foreach (KeyValuePair<string, int> modifier in ability.modifiers)
             }
         }
     }
-    void SaveModifs()
-    {
-        string filePath = Path.Combine(Application.dataPath, "Resources/Entities.json");
-        if (File.Exists(filePath))
-        {
-            string json = JsonUtility.ToJson(all_entities, true);
-            /* for one character
-            int characterIndex = 0;
-            Character character = all_entities.personnages[characterIndex];
-            string json = JsonUtility.ToJson(character, true);*/
-            File.WriteAllText(filePath, json);
-        }
-        else
-        {
-            Debug.LogError("Failed to load JSON file from Resources folder: " + filePath);
-        }
-    }
+    /*getting competences and modifying
 
-    void SaveModifsPlayer()
+    foreach (KeyValuePair<string, int> modifier in ability.modifiers)
     {
-        string filePath = Path.Combine(Application.dataPath, "Resources/Player.json");
-        if (File.Exists(filePath))
-        {
-
-            int characterIndex = 0;
-            Character character = all_entities.personnages[characterIndex];
-            string json = JsonUtility.ToJson(character, true);
-
-            File.WriteAllText(filePath, json);
-        }
-        else
-        {
-            Debug.LogError("Failed to load JSON file from Resources folder: " + filePath);
-        }
-    }
-    void SaveModifsPNJs()
-    {
-        string filePath = Path.Combine(Application.dataPath, "Resources/PNJs.json");
-        if (File.Exists(filePath))
-        {
-            string json = JsonUtility.ToJson(all_entities.pnjs, true);
-            File.WriteAllText(filePath, json);
-        }
-        else
-        {
-            Debug.LogError("Failed to load JSON file from Resources folder: " + filePath);
-        }
-    }
+        string modifierName = modifier.Key;
+        int modifierValue = modifier.Value;
+        
+        // Use the modifierName and modifierValue to modify the corresponding value in your fight manager
+        fightManager.ModifyValue(modifierName, modifierValue);
+    }*/
 }
 
 [System.Serializable]
