@@ -1,9 +1,10 @@
 {
     "name": "Character 1",
-    "life": 130,
+    "life": 160,
     "mana": 50,
     "armour": 20,
-    "speed": 7.0,
-    "money": 10,
-    "escape": 10
+    "money": 0,
+    "speed": 6.0,
+    "skillsList": [],
+    "escape": 0
 }

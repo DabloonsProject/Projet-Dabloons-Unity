@@ -3,9 +3,9 @@
     "life": 100,
     "mana": 50,
     "armour": 20,
-    "speed": 5.0,
     "money": 10,
-    "level": 0,
+    "speed": 5.0,
+    "level": 4,
     "age": 5,
     "race": "hérisson",
     "personality": [
@@ -16,18 +16,21 @@
     "questsList": [
         {
             "name": "quest1",
-            "value": 1,
-            "value2": "line"
+            "description": "",
+            "stepsMax": 5,
+            "stepsCurrent": 3
         },
         {
             "name": "quest2",
-            "value": 5,
-            "value2": "circle"
+            "description": "",
+            "stepsMax": 4,
+            "stepsCurrent": 1
         },
         {
             "name": "quest3",
-            "value": 10,
-            "value2": "square"
+            "description": "",
+            "stepsMax": 6,
+            "stepsCurrent": 0
         }
     ]
 },{
@@ -35,9 +38,9 @@
     "life": 110,
     "mana": 50,
     "armour": 20,
-    "speed": 6.0,
     "money": 0,
-    "level": 0,
+    "speed": 6.0,
+    "level": 2,
     "age": 25,
     "race": "chat",
     "personality": [
@@ -48,13 +51,15 @@
     "questsList": [
         {
             "name": "quest4",
-            "value": 0,
-            "value2": "triangle"
+            "description": "",
+            "stepsMax": 1,
+            "stepsCurrent": 0
         },
         {
             "name": "quest5",
-            "value": 15,
-            "value2": "rectangle"
+            "description": "",
+            "stepsMax": 2,
+            "stepsCurrent": 1
         }
     ]
 }]

@@ -1,0 +1,9 @@
+{
+    "name": "Fireball",
+    "description": "Shoots a ball of fire",
+    "time": 2,
+    "statsList": [
+        { "name": "Damage", "value": 20 },
+        { "name": "BurnDamage", "value": 5 }
+    ]
+}
