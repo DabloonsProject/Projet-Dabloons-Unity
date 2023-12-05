@@ -40,6 +40,9 @@ public class Player : Character
     /*inventory*/
 }
 
+/// <summary>
+///
+/// </summary>
 [System.Serializable]
 public class PNJ : Entity
 {

@@ -18,13 +18,14 @@ public class InputManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Debug.Log("InputManager Created.");
 
-        //Initialisation of inputs
+        //Input's Initialisation
         playerUsingKeys[0] = false;
         playerController[0] = 0;
         playerAxis[0] = new AxisMapping();
         playerButtons[0] = new ButtonMapping();
         playerState[0] = new InputState();
         oldJoystick = Input.GetJoystickNames();
+        //Initialisation
         StartCoroutine(CheckControllers());
     }
 
@@ -146,7 +147,7 @@ public class InputManager : MonoBehaviour
         }
         playerState[playerIndex].extra3 = false;
     }
-    private void FixedUpdate() // not compensated by frame rates not rendering frame rates (fixed timestep is set in project setting>Time here it's 0.01666667(1/60, 60 = frame rate wanted) )
+    private void FixedUpdate() // not compensated by frame rates not rendering frame rates (fixed timestep is set in project setting>Time here it's 0.01666667(1/60, 60 = frame rate wanted))
     {
         UpdatePlayerState(0);
         if (GameManager.instance != null && GameManager.instance.twoPlayer)
@@ -154,7 +155,9 @@ public class InputManager : MonoBehaviour
             UpdatePlayerState(1);            
         }
     }
-    /*Checks for inputs and Return the Controller Index*/
+    /// <summary>
+    /// Checks for inputs and Return the Controller Index
+    /// </summary>
     public int DetectControllerButton()
     {
         int result = -1; // no one pressed
